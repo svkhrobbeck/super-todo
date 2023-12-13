@@ -6,7 +6,10 @@ const startApp = async app => {
   try {
     app.listen(PORT, () => console.log(`server is running on port: ${PORT}`));
     const { connection } = await connect(MONGO_URI);
-    console.log(`mongodb connected to: ${connection.host}`);
+
+    console.log(
+      `mongodb connected to: ${connection.host + "/" + connection.name}`
+    );
   } catch (err) {
     console.log(err);
   }

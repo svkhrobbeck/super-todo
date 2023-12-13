@@ -3,7 +3,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import "dotenv/config";
-import startApp from "./app";
+import startApp from "./app.js";
 
 const app = express();
 
