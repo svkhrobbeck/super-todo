@@ -1,5 +1,5 @@
 export const oAuthRedirectUri = "http://localhost:3000/api/v1/auth/google";
-export const authRedirectFrontUri = "http://localhost:5173/sign-in";
+export const frontUri = process.env.FRONT_END_BASE_URL;
 export const userinfoTokenUrl = "https://www.googleapis.com/oauth2/v3/userinfo";
 
 export const oAuthScopeUrls = [
