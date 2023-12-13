@@ -38,3 +38,10 @@
   font-style: normal;
   font-display: swap;
 }
+
+// components
+@layer components {
+  .btn-navy {
+    @apply bg-navy text-white px-[11px] py-[6px] rounded-[6px];
+  }
+}
