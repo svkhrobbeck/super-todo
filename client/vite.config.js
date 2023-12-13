@@ -4,10 +4,6 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import reactRefresh from "@vitejs/plugin-react-refresh";
 
 export default defineConfig({
-  server: {
-    port: 3003,
-    host: true,
-  },
   build: {
     rollupOptions: {
       input: {
