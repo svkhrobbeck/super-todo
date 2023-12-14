@@ -1,8 +1,9 @@
 import { StatusCodes } from "http-status-codes";
+import { v4 } from "uuid";
 import { frontUri } from "../helpers/urls.js";
 import getUserData from "../helpers/getUserData.js";
 import { authorizeUrl, oAuth2Client } from "../helpers/oAuth.js";
-import { cookieOptions } from "../helpers/constants.js";
+// import { cookieOptions } from "../helpers/constants.js";
 import { generateJwt } from "../helpers/token.js";
 import User from "../models/user.js";
 
@@ -24,10 +25,14 @@ export const authSignWithGoogle = async (req, res) => {
     if (isUserExist) user = isUserExist;
     else user = await User.create(userData);
 
-    const access_token = generateJwt({ userId: user._id, role: user.role });
-    res.cookie("access_token", access_token, cookieOptions);
+    const token = generateJwt({ userId: user._id, role: user.role });
+    // res.cookie("access_token", token, cookieOptions);
 
-    res.status(StatusCodes.SEE_OTHER).redirect(frontUri);
+    res
+      .status(StatusCodes.SEE_OTHER)
+      .redirect(
+        `${frontUri}?callback_access_data=${v4() + v4() + v4()}&access=${token}`
+      );
   } catch (err) {
     console.log("google sign-in error", err);
   }
