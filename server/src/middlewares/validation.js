@@ -62,8 +62,9 @@ export const valLogin = withValidationErrors([
     .notEmpty()
     .withMessage("email is required")
     .isEmail()
+    .withMessage("invalid email format")
     .custom(async email => {
-      const user = User.findOne({ email });
+      const user = await User.findOne({ email });
       if (!user) throw new Error("invalid credentials");
     }),
   body("password").trim().notEmpty().withMessage("password is required"),
