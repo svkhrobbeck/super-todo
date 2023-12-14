@@ -1,26 +1,8 @@
-import axios from "axios";
-import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import getCookie from "../helpers/getCookie";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import landingImg from "/images/landing-img.svg";
 
 const Landing = () => {
-  const token = getCookie("access_token");
-  console.log(token);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!token) navigate("/sign-in");
-
-    const getData = async () => {
-      const { data } = await axios.get("/user/profile");
-      console.log(data);
-    };
-
-    getData();
-  }, []);
-
   return (
     <>
       <Helmet>
