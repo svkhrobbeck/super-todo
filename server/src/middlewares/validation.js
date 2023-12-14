@@ -1,10 +1,13 @@
-import { validationResult, body } from "express-validator";
+import { validationResult, body, param } from "express-validator";
 import {
   BadRequestError,
   NotFoundError,
   UnauthenticatedError,
+  UnauthorizedError,
 } from "../helpers/errors.js";
 import User from "../models/user.js";
+import Todo from "../models/todo.js";
+import { isValidObjectId } from "mongoose";
 
 const withValidationErrors = validateValues => {
   return [
@@ -22,6 +25,10 @@ const withValidationErrors = validateValues => {
 
         if (errorTexts.includes("credentials")) {
           throw new UnauthenticatedError(errorMessages);
+        }
+
+        if (errorTexts.includes("not authorized")) {
+          throw new UnauthorizedError(errorTexts);
         }
 
         throw new BadRequestError(errorMessages);
@@ -60,4 +67,8 @@ export const valLogin = withValidationErrors([
       if (!user) throw new Error("invalid credentials");
     }),
   body("password").trim().notEmpty().withMessage("password is required"),
+]);
+
+export const valCreateTodo = withValidationErrors([
+  body("task").trim().notEmpty().withMessage("task is required"),
 ]);
