@@ -19,7 +19,7 @@ app.use(express.json());
 // api endpoints
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", checkAuth, userRouter);
-app.use("/api/v1/todo", todoRouter);
+app.use("/api/v1/todo", checkAuth, todoRouter);
 app.use("*", (req, res) => {
   res.status(404).json({ message: "endpoint not found" });
 });
