@@ -4,8 +4,10 @@ const getCookie = key => {
 
   cookies.forEach(cookie => {
     const [key, value] = cookie.split("=");
-    obj[key] = value;
+    obj[key] = value?.trim();
   });
 
   return obj[key] || null;
 };
+
+export default getCookie;
