@@ -4,12 +4,17 @@ import morgan from "morgan";
 import cors from "cors";
 import "dotenv/config";
 import startApp from "./app.js";
+// routers
+import authRouter from "./routes/auth.js";
 
 const app = express();
 
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
+
+// api endpoints
+app.use("/api/v1/auth", authRouter);
 app.use("*", (req, res) => {
   res.status(404).json({ message: "endpoint not found" });
 });
