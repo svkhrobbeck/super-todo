@@ -5,6 +5,8 @@ const ErrorPage = () => {
   const error = useRouteError();
   const { pathname } = useLocation();
 
+  console.log(error);
+
   if (error.status === 404) {
     return (
       <div className="h-screen w-full flex flex-col justify-center items-center">
