@@ -4,8 +4,9 @@ import { FormInput } from "../components";
 import signInWithGoogle from "../helpers/signInWithGoogle";
 import signInBtn from "/images/google_signin_btn.png";
 import axios from "axios";
-import { setCookie } from "../helpers/cookie";
+// import { setCookie } from "../helpers/cookie";
 import { toast } from "react-toastify";
+import storage from "../helpers/storage";
 
 export const signInAction = async ({ request }) => {
   const formData = await request.formData();
@@ -13,7 +14,9 @@ export const signInAction = async ({ request }) => {
 
   try {
     const { data } = await axios.post("/auth/login", payload);
-    setCookie("access_token", data.access_token, 14);
+    // setCookie("access_token", data.access_token, 14);
+    storage.set("access_token", data.access_token);
+
     toast.success("Sign-in successful");
     return redirect("/dashboard");
   } catch (err) {

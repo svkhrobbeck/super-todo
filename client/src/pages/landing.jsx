@@ -1,12 +1,20 @@
 import { Helmet } from "react-helmet";
 import { Link, redirect } from "react-router-dom";
 import landingImg from "/images/landing-img.svg";
-import { getCookie } from "../helpers/cookie";
+// import { getCookie, setCookie } from "../helpers/cookie";
+import storage from "../helpers/storage";
 
 export const landingLoader = () => {
-  const token = getCookie("access_token");
-  if (token) return redirect("/dashboard");
+  const token = new URLSearchParams(location.search).get("access");
+  // const access_token = getCookie("access_token");
+  const access_token = storage.get("access_token");
 
+  if (!access_token && token) {
+    // setCookie("access_token", token);
+    storage.set("access_token", token);
+  }
+
+  if ((access_token && !token) || token) return redirect("/dashboard");
   return null;
 };
 
