@@ -22,34 +22,38 @@ export const signUpAction = async ({ request }) => {
 
 const SignUpPage = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-screen">
+    <>
+      <Helmet>
+        <title>Todo Application | Sign Up</title>
+      </Helmet>
+      <div className="flex flex-col justify-center items-center w-full h-screen">
         <Form className="max-w-[340px] w-full flex flex-col" method="POST">
           <h2 className="font-semibold text-[38px] mb-3 text-center">
             Sign Up
           </h2>
-        <FormInput name="name" />
-        <FormInput type="email" name="email" />
+          <FormInput name="name" />
+          <FormInput type="email" name="email" />
           <FormInput type="password" name="password" />
-        <button className="btn-blue">Sign Up</button>
+          <button className="btn-blue">Sign Up</button>
 
-        <div className="flex w-full items-center my-[10px]">
-          <span className="block flex-grow-[1] h-[1px] bg-black"></span>
-          <span className="mx-[8px] text-[19px]">or</span>
-          <span className="block flex-grow-[1] h-[1px] bg-black"></span>
-        </div>
+          <div className="flex w-full items-center my-[10px]">
+            <span className="block flex-grow-[1] h-[1px] bg-black"></span>
+            <span className="mx-[8px] text-[19px]">or</span>
+            <span className="block flex-grow-[1] h-[1px] bg-black"></span>
+          </div>
         </Form>
 
-      <button className="mb-2" onClick={() => signInWithGoogle()}>
-        <img src={signInBtn} alt="sign in with google" />
-      </button>
+        <button className="mb-2" onClick={() => signInWithGoogle()}>
+          <img src={signInBtn} alt="sign in with google" />
+        </button>
 
-      <p>
+        <p>
           do you have an account?{" "}
           <Link className="text-blue-500" to="/sign-in">
             Sign In
           </Link>
-      </p>
-    </div>
+        </p>
+      </div>
     </>
   );
 };

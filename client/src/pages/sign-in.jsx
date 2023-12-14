@@ -23,33 +23,37 @@ export const signInAction = async ({ request }) => {
 
 const SignInPage = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-screen">
+    <>
+      <Helmet>
+        <title>Todo Application | Sign In</title>
+      </Helmet>
+      <div className="flex flex-col justify-center items-center w-full h-screen">
         <Form className="max-w-[340px] w-full flex flex-col" method="POST">
           <h2 className="font-semibold text-[38px] mb-3 text-center">
             Sign In
           </h2>
-        <FormInput type="email" name="email" />
+          <FormInput type="email" name="email" />
           <FormInput type="password" name="password" />
-        <button className="btn-blue">Sign In</button>
+          <button className="btn-blue">Sign In</button>
 
-        <div className="flex w-full items-center my-[10px]">
-          <span className="block flex-grow-[1] h-[1px] bg-black"></span>
-          <span className="mx-[8px] text-[19px]">or</span>
-          <span className="block flex-grow-[1] h-[1px] bg-black"></span>
-        </div>
+          <div className="flex w-full items-center my-[10px]">
+            <span className="block flex-grow-[1] h-[1px] bg-black"></span>
+            <span className="mx-[8px] text-[19px]">or</span>
+            <span className="block flex-grow-[1] h-[1px] bg-black"></span>
+          </div>
         </Form>
 
-      <button className="mb-2" onClick={() => signInWithGoogle()}>
-        <img src={signInBtn} alt="sign in with google" />
-      </button>
+        <button className="mb-2" onClick={() => signInWithGoogle()}>
+          <img src={signInBtn} alt="sign in with google" />
+        </button>
 
-      <p>
-        don't have an account?{" "}
-        <Link className="text-blue-500" to="/sign-up">
-          Sign Up
-        </Link>
-      </p>
-    </div>
+        <p>
+          don't have an account?{" "}
+          <Link className="text-blue-500" to="/sign-up">
+            Sign Up
+          </Link>
+        </p>
+      </div>
     </>
   );
 };
