@@ -23,7 +23,7 @@ export const authSignWithGoogle = async (req, res) => {
     if (isUserExist) user = isUserExist;
     else user = await User.create(userData);
 
-    const access_token = generateJwt({ userId: user._id, sub: user.sub });
+    const access_token = generateJwt({ userId: user._id, role: user.role });
     res.cookie("access_token", access_token, cookieOptions);
 
     res.status(200).redirect(frontUri);
