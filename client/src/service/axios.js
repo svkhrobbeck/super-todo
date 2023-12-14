@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_API_URL } from "../helpers/constants";
-import getCookie from "./../helpers/getCookie";
+import { getCookie } from "./../helpers/cookie";
 
 axios.defaults.baseURL = BASE_API_URL;
 
