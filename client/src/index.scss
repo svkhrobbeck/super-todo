@@ -44,4 +44,8 @@
   .btn-navy {
     @apply bg-navy text-white px-[11px] py-[6px] rounded-[6px];
   }
+
+  .btn-blue {
+    @apply bg-blue-600 text-white px-[11px] py-[6px] rounded-[6px];
+  }
 }
