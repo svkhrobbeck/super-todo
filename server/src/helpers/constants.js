@@ -6,3 +6,8 @@ export const jwtExpiresIn = process.env.JWT_EXPIRES_IN;
 
 export const cookieOptions = { secure: true, expires: cookieDays };
 export const modelOptions = { timestamps: true, versionKey: false };
+
+export const passwordEmptyErrors = [
+  "password is empty",
+  "Sign in with google and set a password through settings",
+];
