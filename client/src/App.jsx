@@ -7,6 +7,8 @@ import {
   SignInPage,
   SignUpPage,
 } from "./pages";
+import { dashboardLoader } from "./layouts/dashboard-layout";
+import { signUpAction } from "./pages/sign-up";
 
 const router = createBrowserRouter([
   {
