@@ -12,4 +12,6 @@ export const authorizeUrl = oAuth2Client.generateAuthUrl({
   access_type: "offline",
   scope: `${oAuthScopeUrls.join(" ")} openid`,
   prompt: "consent",
+  include_granted_scopes: true,
+  response_type: "code",
 });
