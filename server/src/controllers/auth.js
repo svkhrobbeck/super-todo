@@ -1,8 +1,8 @@
 import { StatusCodes } from "http-status-codes";
 import User from "../models/user.js";
 import { generateJwt } from "../helpers/token.js";
-import { passwordEmptyErrors } from "../helpers/constants.js";
-import { BadRequestError, UnauthenticatedError } from "./../helpers/errors.js";
+import { passwordEmptyError } from "../helpers/constants.js";
+import { UnauthenticatedError } from "./../helpers/errors.js";
 import { comparePass, hashPass } from "../helpers/password.js";
 
 export const registerUser = async (req, res) => {
@@ -18,7 +18,7 @@ export const loginUser = async (req, res) => {
   const user = await User.findOne({ email }).lean();
 
   if (!user.password) {
-    throw new BadRequestError(passwordEmptyErrors);
+    res.status(StatusCodes.BAD_REQUEST).json({ warn: passwordEmptyError });
   }
 
   const access_token = generateJwt({ userId: user?._id, role: user.role });
