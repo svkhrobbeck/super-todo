@@ -3,6 +3,7 @@ import { Link, redirect } from "react-router-dom";
 import landingImg from "/images/landing-img.svg";
 // import { getCookie, setCookie } from "../helpers/cookie";
 import storage from "../helpers/storage";
+import { toast } from "react-toastify";
 
 export const landingLoader = () => {
   const token = new URLSearchParams(location.search).get("access");
@@ -14,7 +15,10 @@ export const landingLoader = () => {
     storage.set("access_token", token);
   }
 
-  if ((access_token && !token) || token) return redirect("/dashboard");
+  if ((access_token && !token) || token) {
+    toast.success("Sign-in successful");
+    return redirect("/dashboard");
+  }
   return null;
 };
 
