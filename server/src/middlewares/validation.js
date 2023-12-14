@@ -72,3 +72,20 @@ export const valLogin = withValidationErrors([
 export const valCreateTodo = withValidationErrors([
   body("task").trim().notEmpty().withMessage("task is required"),
 ]);
+
+export const valTodoIdParam = withValidationErrors([
+  param("id").custom(async (id, { req }) => {
+    const isValidId = isValidObjectId(id);
+    if (!isValidId) throw new Error("invalid mongodb id");
+
+    const todo = await Todo.findById(id).lean();
+    if (!todo) throw new Error(`todo doesn't exist with id: ${id}`);
+
+    const isAdmin = req.user.role === "admin";
+    const isOwner = req.user.userId === todo.author.toString();
+
+    if (!isAdmin && !isOwner) {
+      throw new Error("not authorized to access this route");
+    }
+  }),
+]);
