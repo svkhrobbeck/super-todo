@@ -1,3 +1,4 @@
+import { StatusCodes } from "http-status-codes";
 import { frontUri } from "../helpers/urls.js";
 import getUserData from "../helpers/getUserData.js";
 import { authorizeUrl, oAuth2Client } from "../helpers/oAuth.js";
@@ -6,7 +7,7 @@ import { generateJwt } from "../helpers/token.js";
 import User from "../models/user.js";
 
 export const authGetUrlRequest = (req, res) => {
-  res.status(200).json({ url: authorizeUrl });
+  res.status(StatusCodes.OK).json({ url: authorizeUrl });
 };
 
 export const authSignWithGoogle = async (req, res) => {
@@ -26,7 +27,7 @@ export const authSignWithGoogle = async (req, res) => {
     const access_token = generateJwt({ userId: user._id, role: user.role });
     res.cookie("access_token", access_token, cookieOptions);
 
-    res.status(200).redirect(frontUri);
+    res.status(StatusCodes.SEE_OTHER).redirect(frontUri);
   } catch (err) {
     console.log("google sign-in error", err);
   }
