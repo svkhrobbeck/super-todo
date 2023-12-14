@@ -1,7 +1,9 @@
-import { Outlet, redirect, useLoaderData } from "react-router-dom";
+import { Outlet, redirect, useLoaderData, useNavigate } from "react-router-dom";
 import "../service/axios";
 import axios from "axios";
 import { Header } from "./../components";
+import { toast } from "react-toastify";
+import storage from "../helpers/storage";
 
 export const dashboardLoader = async () => {
   try {
@@ -14,6 +16,13 @@ export const dashboardLoader = async () => {
 
 const DashboardLayout = () => {
   const { user } = useLoaderData();
+  const navigate = useNavigate();
+
+  const logoutUser = () => {
+    storage.remove("access_token");
+    navigate("/sign-in");
+    toast.success("Logging out...");
+  };
 
   return (
     <>
