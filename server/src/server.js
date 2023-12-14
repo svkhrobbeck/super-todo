@@ -7,6 +7,7 @@ import startApp from "./app.js";
 // routers
 import authRouter from "./routes/auth.js";
 import userRouter from "./routes/user.js";
+import { checkAuth } from "./middlewares/auth.js";
 
 const app = express();
 
