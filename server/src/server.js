@@ -6,6 +6,7 @@ import "dotenv/config";
 import startApp from "./app.js";
 // routers
 import authRouter from "./routes/auth.js";
+import userRouter from "./routes/user.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // api endpoints
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", checkAuth, userRouter);
 app.use("*", (req, res) => {
   res.status(404).json({ message: "endpoint not found" });
 });
