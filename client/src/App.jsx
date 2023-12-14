@@ -9,6 +9,7 @@ import {
 } from "./pages";
 import { dashboardLoader } from "./layouts/dashboard-layout";
 import { signUpAction } from "./pages/sign-up";
+import { signInAction } from "./pages/sign-in";
 
 const router = createBrowserRouter([
   {
@@ -23,10 +24,12 @@ const router = createBrowserRouter([
       {
         path: "sign-in",
         element: <SignInPage />,
+        action: signInAction,
       },
       {
         path: "sign-up",
         element: <SignUpPage />,
+        action: signUpAction,
       },
       {
         path: "dashboard",
