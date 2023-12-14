@@ -7,6 +7,7 @@ import startApp from "./app.js";
 // routers
 import authRouter from "./routes/auth.js";
 import userRouter from "./routes/user.js";
+import todoRouter from "./routes/todo.js";
 import { checkAuth } from "./middlewares/auth.js";
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.json());
 // api endpoints
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", checkAuth, userRouter);
+app.use("/api/v1/todo", todoRouter);
 app.use("*", (req, res) => {
   res.status(404).json({ message: "endpoint not found" });
 });
