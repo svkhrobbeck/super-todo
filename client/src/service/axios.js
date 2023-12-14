@@ -6,7 +6,7 @@ axios.defaults.baseURL = BASE_API_URL;
 
 axios.interceptors.request.use(config => {
   const token = getCookie("access_token");
-  config.headers.Authorization = `Bearer ${token}`;
+  config.headers.Authorization = token ? `Bearer ${token}` : undefined;
 
   return config;
 });
