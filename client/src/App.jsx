@@ -1,6 +1,12 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { HomeLayout } from "./layouts";
-import { ErrorPage, LandingPage, SignInPage } from "./pages";
+import { DashboardLayout, HomeLayout } from "./layouts";
+import {
+  AddTaskPage,
+  ErrorPage,
+  LandingPage,
+  SignInPage,
+  SignUpPage,
+} from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -12,10 +18,23 @@ const router = createBrowserRouter([
         index: true,
         element: <LandingPage />,
       },
-
       {
-        path: "/sign-in",
+        path: "sign-in",
         element: <SignInPage />,
+      },
+      {
+        path: "sign-up",
+        element: <SignUpPage />,
+      },
+      {
+        path: "dashboard",
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <AddTaskPage />,
+          },
+        ],
       },
     ],
   },
