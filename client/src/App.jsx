@@ -10,6 +10,7 @@ import {
 import { dashboardLoader } from "./layouts/dashboard-layout";
 import { signUpAction } from "./pages/sign-up";
 import { signInAction } from "./pages/sign-in";
+import { landingLoader } from "./pages/landing";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <LandingPage />,
+        loader: landingLoader,
       },
       {
         path: "sign-in",

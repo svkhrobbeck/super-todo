@@ -1,6 +1,14 @@
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import landingImg from "/images/landing-img.svg";
+import { getCookie } from "../helpers/cookie";
+
+export const landingLoader = () => {
+  const token = getCookie("access_token");
+  if (token) return redirect("/dashboard");
+
+  return null;
+};
 
 const Landing = () => {
   return (
@@ -24,7 +32,11 @@ const Landing = () => {
             </Link>
           </div>
         </div>
-        <img className="w-[450px] h-auto" src={landingImg} alt="" />
+        <img
+          className="w-[450px] h-auto"
+          src={landingImg}
+          alt="landing illustration"
+        />
       </div>
     </>
   );
