@@ -1,5 +1,5 @@
 export const setCookie = (name, value, expireDays = 1) => {
-  const cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+  const cookie = `${name}=${value}`;
   const days = Date.now() + expireDays * 1000 * 60 * 60 * 24;
 
   const expirationDate = new Date(days).toUTCString();
