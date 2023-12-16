@@ -1,6 +1,19 @@
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import landingImg from "/images/landing-img.svg";
+import storage from "../helpers/storage";
+import { toast } from "react-toastify";
+
+export const landingLoader = () => {
+  const access_token = storage.get("access_token");
+
+  if (access_token) {
+    toast.success("Sign-in successful");
+    return redirect("/dashboard");
+  }
+
+  return null;
+};
 
 const Landing = () => {
   return (
