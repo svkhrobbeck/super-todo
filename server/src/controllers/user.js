@@ -1,4 +1,5 @@
 import filterObjectFields from "../helpers/filterObjectFields.js";
+import { hashPass } from "../helpers/password.js";
 import User from "../models/user.js";
 import { StatusCodes } from "http-status-codes";
 
@@ -14,4 +15,11 @@ export const updateUserProfile = async (req, res) => {
   await User.findByIdAndUpdate(req.user.userId, { email, name }, { new: true });
 
   res.status(StatusCodes.OK).json({ message: "user updated" });
+};
+
+export const updatePassword = async (req, res) => {
+  const hashedPassword = await hashPass(req.body.password);
+  await User.findByIdAndUpdate(req.user.userId, { password: hashedPassword });
+
+  res.status(StatusCodes.OK).json({ message: "password updated" });
 };
