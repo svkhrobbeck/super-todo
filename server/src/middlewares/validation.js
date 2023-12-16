@@ -120,6 +120,17 @@ export const valUpdatePassword = withValidationErrors([
     }),
 ]);
 
+export const valSetPassword = withValidationErrors([
+  body("password")
+    .trim()
+    .notEmpty()
+    .withMessage("password is required")
+    .custom(async (password, { req }) => {
+      const user = await User.findById(req.user.userId).lean();
+
+      if (user.password !== null) throw new Error("password already setted");
+    }),
+]);
 
 export const valCreateTodo = withValidationErrors([
   body("task").trim().notEmpty().withMessage("task is required"),
