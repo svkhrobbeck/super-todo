@@ -8,6 +8,7 @@ import {
 import User from "../models/user.js";
 import Todo from "../models/todo.js";
 import { isValidObjectId } from "mongoose";
+import { comparePass } from "../helpers/password.js";
 
 const withValidationErrors = validateValues => {
   return [
@@ -29,6 +30,13 @@ const withValidationErrors = validateValues => {
 
         if (errorTexts.includes("not authorized")) {
           throw new UnauthorizedError(errorTexts);
+        }
+
+        if (errorTexts.includes("password is empty")) {
+          throw new BadRequestError(
+            "Password is empty! please first set password"
+          );
+          return;
         }
 
         throw new BadRequestError(errorMessages);
@@ -85,6 +93,33 @@ export const valUserUpdate = withValidationErrors([
     }),
   body("name").trim().notEmpty().withMessage("name is required"),
 ]);
+
+export const valUpdatePassword = withValidationErrors([
+  body("oldPassword")
+    .trim()
+    .notEmpty()
+    .withMessage("old password is required")
+    .custom(async (password, { req }) => {
+      const user = await User.findById(req.user.userId).lean();
+
+      if (user.password === null) {
+        throw new Error("Password is empty! Please first set password");
+      } else {
+        const isMatch = await comparePass(password, user.password);
+        if (!isMatch) throw new Error("old password is wrong");
+      }
+    }),
+  body("password").trim().notEmpty().withMessage("password is required"),
+  body("comfirmPassword")
+    .trim()
+    .notEmpty()
+    .withMessage("comfirm password is required")
+    .custom(async (comfirmPassword, { req }) => {
+      if (comfirmPassword.trim() !== req.body.password.trim())
+        throw new Error("comfirm password is wrong");
+    }),
+]);
+
 
 export const valCreateTodo = withValidationErrors([
   body("task").trim().notEmpty().withMessage("task is required"),
