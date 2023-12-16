@@ -1,10 +1,11 @@
 import { Form, Link, redirect } from "react-router-dom";
-import { FormInput } from "../components";
+import { FormInput, SubmitBtn } from "../components";
 import signInWithGoogle from "../helpers/signInWithGoogle";
 import signInBtn from "/images/google_signin_btn.png";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import { toast } from "react-toastify";
+import errorToast from "../helpers/errorToast";
 
 export const signUpAction = async ({ request }) => {
   const formData = await request.formData();
@@ -15,7 +16,7 @@ export const signUpAction = async ({ request }) => {
     toast.success("Sign-up successful");
     return redirect("/sign-in");
   } catch (err) {
-    console.log(err);
+    errorToast(err);
     return err;
   }
 };
@@ -34,7 +35,7 @@ const SignUpPage = () => {
           <FormInput name="name" />
           <FormInput type="email" name="email" />
           <FormInput type="password" name="password" />
-          <button className="btn-blue">Sign Up</button>
+          <SubmitBtn text="Sign Up" className="btn-blue" />
 
           <div className="flex w-full items-center my-[10px]">
             <span className="block flex-grow-[1] h-[1px] bg-black"></span>

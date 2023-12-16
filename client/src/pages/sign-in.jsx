@@ -1,12 +1,13 @@
-import { Form, Link, redirect } from "react-router-dom";
+import { Form, Link, redirect, useActionData } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { FormInput } from "../components";
+import { FormInput, SubmitBtn } from "../components";
 import signInWithGoogle from "../helpers/signInWithGoogle";
 import signInBtn from "/images/google_signin_btn.png";
 import axios from "axios";
 // import { setCookie } from "../helpers/cookie";
 import { toast } from "react-toastify";
 import storage from "../helpers/storage";
+import errorToast from "../helpers/errorToast";
 
 export const signInAction = async ({ request }) => {
   const formData = await request.formData();
@@ -15,16 +16,21 @@ export const signInAction = async ({ request }) => {
   try {
     const { data } = await axios.post("/auth/login", payload);
     // setCookie("access_token", data.access_token, 14);
-    storage.set("access_token", data.access_token);
+    if (data.access_token) {
+      storage.set("access_token", data.access_token);
+    } else return;
 
     toast.success("Sign-in successful");
     return redirect("/dashboard");
   } catch (err) {
+    errorToast(err);
     return err;
   }
 };
 
 const SignInPage = () => {
+  const data = useActionData();
+
   return (
     <>
       <Helmet>
@@ -35,9 +41,14 @@ const SignInPage = () => {
           <h2 className="font-semibold text-[38px] mb-3 text-center">
             Sign In
           </h2>
+
+          {data?.response?.data?.warn ? (
+            <div className="alert-orange">{data.response.data?.warn}</div>
+          ) : null}
+
           <FormInput type="email" name="email" />
           <FormInput type="password" name="password" />
-          <button className="btn-blue">Sign In</button>
+          <SubmitBtn text="Sign In" className="btn-blue" />
 
           <div className="flex w-full items-center my-[10px]">
             <span className="block flex-grow-[1] h-[1px] bg-black"></span>
