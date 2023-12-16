@@ -1,6 +1,9 @@
 export { default as Header } from "./header";
 export { default as FormInput } from "./form-input";
 export { default as SubmitBtn } from "./submit-btn";
+export { default as TaskCard } from "./task-card";
+export { default as CompletedTasks } from "./completed-tasks";
+export { default as RunningTasks } from "./running-tasks";
 export { default as Modal } from "./modal";
 export { default as AddTaskModalInner } from "./add-task";
 export { default as EditTaskModalInner } from "./edit-task";
