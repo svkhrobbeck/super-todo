@@ -6,7 +6,7 @@ const SubmitBtn = ({ text = "submit", className = "btn-navy" }) => {
 
   return (
     <button className={className} disabled={isSubmitting}>
-      {isSubmitting ? "submitting..." : text}
+      {isSubmitting ? "loading..." : text}
     </button>
   );
 };
