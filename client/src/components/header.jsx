@@ -8,7 +8,7 @@ import { Modal, AddTaskModalInner } from ".";
 import { useState } from "react";
 
 const Header = () => {
-  const { user, logoutUser } = useDashboardContext();
+  const { user } = useDashboardContext();
   const [modal, setModal] = useState(false);
 
   const modalClose = () => setModal(false);
