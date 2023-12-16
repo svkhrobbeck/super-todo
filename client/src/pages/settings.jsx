@@ -1,9 +1,11 @@
 import { Helmet } from "react-helmet";
 import { useDashboardContext } from "../layouts/dashboard-layout";
-import { Form, Link, redirect } from "react-router-dom";
+import { Form, Link, redirect, useNavigate } from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
 import errorToast from "../helpers/errorToast";
 import axios from "axios";
+import storage from "../helpers/storage";
+import { toast } from "react-toastify";
 
 export const settingsAction = async ({ request }) => {
   const formData = await request.formData();
@@ -11,6 +13,7 @@ export const settingsAction = async ({ request }) => {
 
   try {
     await axios.patch("/user/profile", payload);
+    toast.success("user profile updated");
     return redirect("..");
   } catch (err) {
     errorToast(err);
@@ -19,7 +22,14 @@ export const settingsAction = async ({ request }) => {
 };
 
 const SettingsPage = () => {
-  const { user, signOutUser } = useDashboardContext();
+  const { user } = useDashboardContext();
+  const navigate = useNavigate();
+
+  const signOutUser = () => {
+    storage.remove("access_token");
+    navigate("/sign-in");
+    toast.success("signing out...");
+  };
 
   return (
     <>
