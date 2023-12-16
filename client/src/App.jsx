@@ -11,6 +11,7 @@ import {
   UpdatePassword,
 } from "./pages";
 import { dashboardLoader } from "./layouts/dashboard-layout";
+import { signUpAction, signUpLoader } from "./pages/sign-up";
 import { signInAction, signInLoader } from "./pages/sign-in";
 import store from "./store";
 import { homeLoader } from "./pages/home";
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
         path: "sign-up",
         element: <SignUpPage />,
         action: signUpAction,
+        loader: signUpLoader,
       },
       {
         path: "dashboard",
