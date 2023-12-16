@@ -70,6 +70,22 @@ export const valLogin = withValidationErrors([
   body("password").trim().notEmpty().withMessage("password is required"),
 ]);
 
+export const valUserUpdate = withValidationErrors([
+  body("email")
+    .trim()
+    .notEmpty()
+    .withMessage("email is required")
+    .isEmail()
+    .withMessage("invalid email format")
+    .custom(async (email, { req }) => {
+      const user = await User.findOne({ email }).lean();
+      if (user && user._id.toString() !== req.user.userId) {
+        throw new Error("email already exists");
+      }
+    }),
+  body("name").trim().notEmpty().withMessage("name is required"),
+]);
+
 export const valCreateTodo = withValidationErrors([
   body("task").trim().notEmpty().withMessage("task is required"),
 ]);
