@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { DashboardLayout, HomeLayout } from "./layouts";
+import { Provider } from "react-redux";
 import {
   AddTaskPage,
   ErrorPage,
@@ -11,6 +12,7 @@ import { dashboardLoader } from "./layouts/dashboard-layout";
 import { signUpAction } from "./pages/sign-up";
 import { signInAction } from "./pages/sign-in";
 import { landingLoader } from "./pages/landing";
+import store from "./store";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +51,11 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 };
 
 export default App;
