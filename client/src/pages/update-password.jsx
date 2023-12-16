@@ -3,9 +3,9 @@ import { Form, Link, redirect } from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
 import errorToast from "../helpers/errorToast";
 import axios from "axios";
-import { useDashboardContext } from "../layouts/dashboard-layout";
 import filterObjectFields from "../helpers/filterObjectFields";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 export const updatePasswordAction = async ({ request }) => {
   const formData = await request.formData();
@@ -27,7 +27,7 @@ export const updatePasswordAction = async ({ request }) => {
 };
 
 const UpdatePassword = () => {
-  const { passwordType, setPasswordType } = useDashboardContext();
+  const [passwordType, setPasswordType] = useState("");
 
   console.log(passwordType);
   return (
@@ -43,7 +43,7 @@ const UpdatePassword = () => {
           {passwordType === "set-password" ? (
             <FormInput type="password" name="password" required />
           ) : null}
-          {passwordType === "update-password" ? (
+          {passwordType === "update-password" && (
             <>
               <FormInput
                 type="password"
@@ -64,7 +64,7 @@ const UpdatePassword = () => {
                 required
               />
             </>
-          ) : null}
+          )}
           <div
             className={`flex ${
               !!passwordType ? "justify-end" : "justify-center"
@@ -80,13 +80,13 @@ const UpdatePassword = () => {
               <option value="1" hidden disabled>
                 select type
               </option>
-              <option value="set-password">set first password</option>
+              <option value="set-password">set password</option>
               <option value="update-password">update password</option>
             </select>
             <Link className="btn-blue" to="..">
               back to dashboard
             </Link>
-            <SubmitBtn text="update" />
+            {passwordType && <SubmitBtn text="update" />}
           </div>
         </Form>
       </div>
