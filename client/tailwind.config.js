@@ -191,7 +191,10 @@ export default {
       "6xl": "72rem",
       "7xl": "80rem",
     },
-    container: {},
+    container: {
+      padding: "15px",
+      center: true,
+    },
     content: {
       none: "none",
     },
