@@ -25,14 +25,13 @@ export const authSignWithGoogle = async (req, res) => {
     if (isUserExist) user = isUserExist;
     else user = await User.create(userData);
 
-    const token = generateJwt({ userId: user._id, role: user.role });
     // res.cookie("access_token", token, cookieOptions);
+    const token = generateJwt({ userId: user._id, role: user.role });
+    const fake_access_data = new Array(6).fill(v4()).join("");
 
-    res
-      .status(StatusCodes.SEE_OTHER)
-      .redirect(
-        `${frontUri}?callback_access_data=${v4() + v4() + v4()}&access=${token}`
-      );
+    res.redirect(
+      `${frontUri}?callback_access_data=${fake_access_data}&access=${token}`
+    );
   } catch (err) {
     console.log("google sign-in error", err);
   }
