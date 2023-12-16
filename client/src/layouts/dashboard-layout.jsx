@@ -20,19 +20,9 @@ export const dashboardLoader = async () => {
 
 const DashboardLayout = () => {
   const { user } = useLoaderData();
-  const navigate = useNavigate();
-  const [passwordType, setPasswordType] = useState("");
-
-  const signOutUser = () => {
-    storage.remove("access_token");
-    navigate("/sign-in");
-    toast.success("signing out...");
-  };
 
   return (
-    <DashboardContext.Provider
-      value={{ user, signOutUser, passwordType, setPasswordType }}
-    >
+    <DashboardContext.Provider value={{ user, signOutUser }}>
       <Header />
       <main>
         <Outlet context={{ user }} />
