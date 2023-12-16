@@ -6,32 +6,42 @@ import { FiEdit } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 import { useState } from "react";
 import Modal from "./modal";
+import spinnerImg from "/images/spinner.svg";
 import { EditTaskModalInner } from ".";
 import { toast } from "react-toastify";
 
 const TaskCard = ({ _id, task, status, createdAt, updatedAt }) => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const modalClose = () => setModal(false);
 
   const handleDeleteTodo = async () => {
+    setIsLoading(true);
     try {
       await axios.delete(`/todo/${_id}`);
       navigate("/dashboard");
       toast.success("todo deleted");
     } catch (err) {
       errorToast(er);
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  console.log();
+
   const handleStatusUpdate = async () => {
+    setIsLoading(true);
     try {
       await axios.patch(`/todo/status/${_id}`);
       navigate("/dashboard");
       toast.success("todo status updated");
     } catch (err) {
       errorToast(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -61,9 +71,11 @@ const TaskCard = ({ _id, task, status, createdAt, updatedAt }) => {
           className="w-[16px] h-[16px] accent-black"
           type="checkbox"
           defaultChecked={status}
+          disabled={isLoading}
           onChange={handleStatusUpdate}
         />
         <span>Mark as completed</span>
+        {isLoading && <img src={spinnerImg} alt="spinner" />}
       </label>
       <div className="absolute top-[3px] right-[3px] flex flex-col items-center">
         <button className="flex" onClick={() => setModal(true)}>
