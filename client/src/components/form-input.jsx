@@ -7,7 +7,7 @@ const FormInput = ({
   defaultValue = "",
 }) => {
   return (
-    <div className="flex flex-col [&:not(:last-child)]:mb-[15px]">
+    <div className="flex w-full flex-col [&:not(:last-child)]:mb-[15px]">
       <label className="select-none capitalize" htmlFor={name}>
         {labelText || name}
       </label>
