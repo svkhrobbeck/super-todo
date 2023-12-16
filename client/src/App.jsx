@@ -11,13 +11,12 @@ import {
   UpdatePassword,
 } from "./pages";
 import { dashboardLoader } from "./layouts/dashboard-layout";
-import { signUpAction } from "./pages/sign-up";
-import { signInAction } from "./pages/sign-in";
-import { landingLoader } from "./pages/landing";
+import { signInAction, signInLoader } from "./pages/sign-in";
 import store from "./store";
 import { homeLoader } from "./pages/home";
 import { settingsAction } from "./pages/settings";
 import { updatePasswordAction } from "./pages/update-password";
+import { landingLoader } from "./pages/landing";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +33,7 @@ const router = createBrowserRouter([
         path: "sign-in",
         element: <SignInPage />,
         action: signInAction,
+        loader: signInLoader,
       },
       {
         path: "sign-up",

@@ -4,7 +4,6 @@ import { FormInput, SubmitBtn } from "../components";
 import signInWithGoogle from "../helpers/signInWithGoogle";
 import signInBtn from "/images/google_signin_btn.png";
 import axios from "axios";
-// import { setCookie } from "../helpers/cookie";
 import { toast } from "react-toastify";
 import storage from "../helpers/storage";
 import errorToast from "../helpers/errorToast";
@@ -26,6 +25,21 @@ export const signInAction = async ({ request }) => {
     errorToast(err);
     return err;
   }
+};
+
+export const signInLoader = () => {
+  const token = new URLSearchParams(location.search).get("access");
+  const access_token = storage.get("access_token");
+
+  if (!access_token && token) {
+    storage.set("access_token", token);
+  }
+
+  if ((access_token && !token) || token) {
+    toast.success("Sign-in successful");
+    return redirect("/dashboard");
+  }
+  return null;
 };
 
 const SignInPage = () => {
