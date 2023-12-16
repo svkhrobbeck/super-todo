@@ -2,13 +2,14 @@ import { StatusCodes } from "http-status-codes";
 import Todo from "../models/todo.js";
 
 export const getAllTodo = async (req, res) => {
-  const page = +(req.query?.page || 1);
-  const limit = +(req.query?.limit || 20);
+  // const page = +(req.query?.page || 1);
+  // const limit = +(req.query?.limit || null);
 
-  const skip = (page - 1) * limit;
+  // const skip = (page - 1) * limit;
   const author = req.user.userId;
 
-  const all_todo = await Todo.find({ author }).skip(skip).limit(limit);
+  const all_todo = await Todo.find({ author })
+  // .skip(skip).limit(limit);
   const total_todo = await Todo.countDocuments({ author });
 
   res.status(StatusCodes.OK).json({ all_todo, total_todo });
@@ -41,10 +42,13 @@ export const editTodoStatus = async (req, res) => {
   const id = req.params.id;
   const todo = await Todo.findById(id).lean();
 
-  const task = todo.task ? false : true;
-  const updatedTodo = await Todo.findByIdAndUpdate(id, { task }, { new: true });
+  const status = todo.status ? false : true;
+  const updated = await Todo.findByIdAndUpdate(id, { status }, { new: true });
 
-  res.status(StatusCodes.OK).json({ todo: updatedTodo });
+  res.status(StatusCodes.OK).json({ todo: updated });
 };
 
-export const deleteOneTodo = async (req, res) => {};
+export const deleteOneTodo = async (req, res) => {
+  await Todo.findByIdAndDelete(req.params.id);
+  res.status(StatusCodes.OK).json({ message: "todo deleted" });
+};
