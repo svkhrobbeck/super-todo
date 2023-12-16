@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 import { toast } from "react-toastify";
 import errorToast from "../helpers/errorToast";
+import storage from "../helpers/storage";
 
 export const signUpAction = async ({ request }) => {
   const formData = await request.formData();
@@ -19,6 +20,17 @@ export const signUpAction = async ({ request }) => {
     errorToast(err);
     return err;
   }
+};
+
+export const signUpLoader = () => {
+  const access_token = storage.get("access_token");
+
+  if (access_token) {
+    toast.success("Sign-in successful");
+    return redirect("/dashboard");
+  }
+
+  return null;
 };
 
 const SignUpPage = () => {
