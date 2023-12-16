@@ -2,17 +2,22 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { DashboardLayout, HomeLayout } from "./layouts";
 import { Provider } from "react-redux";
 import {
-  AddTaskPage,
   ErrorPage,
+  HomePage,
   LandingPage,
+  SettingsPage,
   SignInPage,
   SignUpPage,
+  UpdatePassword,
 } from "./pages";
 import { dashboardLoader } from "./layouts/dashboard-layout";
 import { signUpAction } from "./pages/sign-up";
 import { signInAction } from "./pages/sign-in";
 import { landingLoader } from "./pages/landing";
 import store from "./store";
+import { homeLoader } from "./pages/home";
+import { settingsAction } from "./pages/settings";
+import { updatePasswordAction } from "./pages/update-password";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +47,18 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <AddTaskPage />,
+            element: <HomePage />,
+            loader: homeLoader,
+          },
+          {
+            path: "settings",
+            element: <SettingsPage />,
+            action: settingsAction,
+          },
+          {
+            path: "update-password",
+            element: <UpdatePassword />,
+            action: updatePasswordAction,
           },
         ],
       },
