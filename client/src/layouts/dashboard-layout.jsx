@@ -1,10 +1,9 @@
-import { Outlet, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { Outlet, redirect, useLoaderData } from "react-router-dom";
 import "../service/axios";
 import axios from "axios";
 import { Header } from "./../components";
-import { toast } from "react-toastify";
 import storage from "../helpers/storage";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 
 const DashboardContext = createContext();
 
@@ -22,7 +21,7 @@ const DashboardLayout = () => {
   const { user } = useLoaderData();
 
   return (
-    <DashboardContext.Provider value={{ user, signOutUser }}>
+    <DashboardContext.Provider value={{ user }}>
       <Header />
       <main>
         <Outlet context={{ user }} />

@@ -30,8 +30,6 @@ const TaskCard = ({ _id, task, status, createdAt, updatedAt }) => {
     }
   };
 
-  console.log();
-
   const handleStatusUpdate = async () => {
     setIsLoading(true);
     try {

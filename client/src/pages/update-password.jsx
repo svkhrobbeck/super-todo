@@ -29,7 +29,6 @@ export const updatePasswordAction = async ({ request }) => {
 const UpdatePassword = () => {
   const [passwordType, setPasswordType] = useState("");
 
-  console.log(passwordType);
   return (
     <>
       <Helmet>
