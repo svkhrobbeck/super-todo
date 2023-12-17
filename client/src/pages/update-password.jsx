@@ -27,7 +27,7 @@ export const updatePasswordAction = async ({ request }) => {
 };
 
 const UpdatePassword = () => {
-  const [passwordType, setPasswordType] = useState("");
+  const [passwordType, setPasswordType] = useState("set-password");
 
   return (
     <>
@@ -36,9 +36,10 @@ const UpdatePassword = () => {
       </Helmet>
       <div className="flex justify-center">
         <Form className="max-w-[600px] w-full" method="PATCH">
-          <h2 className="font-bold  text-[42px] border-b mb-[8px] border-black text-center">
-            Update/Set Password
-          </h2>
+          <h3 className="font-medium text-center text-[28px]">
+            you can {passwordType.includes("set") ? "set new" : "update the"}{" "}
+            password
+          </h3>
           {passwordType === "set-password" ? (
             <FormInput type="password" name="password" required />
           ) : null}
@@ -69,23 +70,20 @@ const UpdatePassword = () => {
               !!passwordType ? "justify-end" : "justify-center"
             } gap-[12px]`}
           >
+            <Link className="btn-teal" to="..">
+              back to dashboard
+            </Link>
             <select
-              className="text-white bg-green-700 border-none px-[11px] py-[6px] rounded-[6px]"
-              defaultValue="1"
+              className="text-white bg-teal-600 border-none px-[11px] py-[6px] rounded-[6px]"
+              onChange={e => setPasswordType(e.target.value)}
+              defaultValue={passwordType}
               name="type"
               required
-              onChange={e => setPasswordType(e.target.value)}
             >
-              <option value="1" hidden disabled>
-                select type
-              </option>
               <option value="set-password">set password</option>
               <option value="update-password">update password</option>
             </select>
-            <Link className="btn-blue" to="..">
-              back to dashboard
-            </Link>
-            {passwordType && <SubmitBtn text="update" />}
+            {passwordType && <SubmitBtn className="btn-indigo" text="comfirm" />}
           </div>
         </Form>
       </div>

@@ -2,7 +2,7 @@ import { Form, Link, redirect, useActionData } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { FormInput, SubmitBtn } from "../components";
 import signInWithGoogle from "../helpers/signInWithGoogle";
-import signInBtn from "/images/google_signin_btn.png";
+import signInBtn from "/images/google_signin_btn.svg";
 import axios from "axios";
 import { toast } from "react-toastify";
 import storage from "../helpers/storage";
@@ -51,7 +51,7 @@ const SignInPage = () => {
         <title>Todo Application | Sign In</title>
       </Helmet>
       <div className="flex flex-col justify-center items-center w-full h-screen">
-        <Form className="max-w-[340px] w-full flex flex-col" method="POST">
+        <Form className="max-w-[480px] w-full flex flex-col" method="POST">
           <h2 className="font-semibold text-[38px] mb-3 text-center">
             Sign In
           </h2>
@@ -62,7 +62,7 @@ const SignInPage = () => {
 
           <FormInput type="email" name="email" />
           <FormInput type="password" name="password" />
-          <SubmitBtn text="Sign In" className="btn-blue" />
+          <SubmitBtn className="btn-teal" text="Sign In" />
 
           <div className="flex w-full items-center my-[10px]">
             <span className="block flex-grow-[1] h-[1px] bg-black"></span>
@@ -72,12 +72,12 @@ const SignInPage = () => {
         </Form>
 
         <button className="mb-2" onClick={() => signInWithGoogle()}>
-          <img src={signInBtn} alt="sign in with google" />
+          <img src={signInBtn} alt="sign-in with google" />
         </button>
 
         <p>
           don't have an account?{" "}
-          <Link className="text-blue-500" to="/sign-up">
+          <Link className="text-teal-600" to="/sign-up">
             Sign Up
           </Link>
         </p>

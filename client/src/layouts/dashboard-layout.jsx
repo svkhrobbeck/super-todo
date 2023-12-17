@@ -1,9 +1,9 @@
 import { Outlet, redirect, useLoaderData } from "react-router-dom";
 import "../service/axios";
 import axios from "axios";
-import { Header } from "./../components";
+import { Footer, Header } from "./../components";
 import storage from "../helpers/storage";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const DashboardContext = createContext();
 
@@ -19,13 +19,15 @@ export const dashboardLoader = async () => {
 
 const DashboardLayout = () => {
   const { user } = useLoaderData();
+  const [type, setType] = useState("all");
 
   return (
-    <DashboardContext.Provider value={{ user }}>
+    <DashboardContext.Provider value={{ user, type, setType }}>
       <Header />
-      <main>
+      <main className="flex-grow-[1]">
         <Outlet context={{ user }} />
       </main>
+      <Footer />
     </DashboardContext.Provider>
   );
 };

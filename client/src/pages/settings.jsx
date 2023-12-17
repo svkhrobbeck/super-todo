@@ -38,31 +38,35 @@ const SettingsPage = () => {
       </Helmet>
       <section className="flex justify-center">
         <Form className="p-[10px] max-w-[700px] w-full" method="PATCH">
-          <h2 className="font-bold text-[42px] text-center">Update Profile</h2>
           <div className="pt-[10px] flex justify-center items-center gap-[12px]">
             <img
               className="w-[100px] rounded-full"
               src={user.picture}
               alt={user.name}
+              title={user.name}
             />
             <div>
               <p className="font-bold text-[26px] lowercase">{user.email}</p>
-              <p className="font-medium text-[18px] capitalize">{user.name}</p>
+              <p className="font-medium text-[18px]">
+                you can change the profile
+              </p>
             </div>
           </div>
+          <FormInput
+            name="name"
+            labelText="Full Name"
+            defaultValue={user.name}
+            required
+          />
           <FormInput name="email" defaultValue={user.email} required />
-          <FormInput name="name" defaultValue={user.name} required />
           <div className="flex gap-[12px] justify-end">
-            <Link className="btn-teal" to="../update-password">
-              update/set password
-            </Link>
-            <Link className="btn-blue" to="..">
-              back to dashboard
-            </Link>
-            <SubmitBtn text="update profile" />
-            <button className="btn-red" type="button" onClick={signOutUser}>
+            <button className="btn-orange" type="button" onClick={signOutUser}>
               sign out
             </button>
+            <Link className="btn-teal" to="../update-password">
+              set password
+            </Link>
+            <SubmitBtn className="btn-indigo" text="comfirm" />
           </div>
         </Form>
       </section>

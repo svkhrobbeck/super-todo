@@ -1,7 +1,7 @@
 import { Form, Link, redirect } from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
 import signInWithGoogle from "../helpers/signInWithGoogle";
-import signInBtn from "/images/google_signin_btn.png";
+import signUpBtn from "/images/google_signup_btn.svg";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -40,14 +40,14 @@ const SignUpPage = () => {
         <title>Todo Application | Sign Up</title>
       </Helmet>
       <div className="flex flex-col justify-center items-center w-full h-screen">
-        <Form className="max-w-[340px] w-full flex flex-col" method="POST">
+        <Form className="max-w-[480px] w-full flex flex-col" method="POST">
           <h2 className="font-semibold text-[38px] mb-3 text-center">
             Sign Up
           </h2>
           <FormInput name="name" />
           <FormInput type="email" name="email" />
           <FormInput type="password" name="password" />
-          <SubmitBtn text="Sign Up" className="btn-blue" />
+          <SubmitBtn className="btn-teal" text="Sign Up" />
 
           <div className="flex w-full items-center my-[10px]">
             <span className="block flex-grow-[1] h-[1px] bg-black"></span>
@@ -57,12 +57,12 @@ const SignUpPage = () => {
         </Form>
 
         <button className="mb-2" onClick={() => signInWithGoogle()}>
-          <img src={signInBtn} alt="sign in with google" />
+          <img src={signUpBtn} alt="sign-up with google" />
         </button>
 
         <p>
           do you have an account?{" "}
-          <Link className="text-blue-500" to="/sign-in">
+          <Link className="text-teal-600" to="/sign-in">
             Sign In
           </Link>
         </p>
