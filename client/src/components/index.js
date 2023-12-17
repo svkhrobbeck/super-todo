@@ -7,3 +7,4 @@ export { default as RunningTasks } from "./running-tasks";
 export { default as Modal } from "./modal";
 export { default as AddTaskModalInner } from "./add-task";
 export { default as EditTaskModalInner } from "./edit-task";
+export { default as Footer } from "./footer";
