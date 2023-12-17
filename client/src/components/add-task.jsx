@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import errorToast from "../helpers/errorToast";
 import SubmitBtn from "./submit-btn";
 import { toast } from "react-toastify";
+import FormInput from "./form-input";
 
 const AddTaskModalInner = ({ modalClose }) => {
   const navigate = useNavigate();
@@ -26,27 +27,28 @@ const AddTaskModalInner = ({ modalClose }) => {
   return (
     <form
       onSubmit={handleAddTask}
-      className="w-full max-w-[800px] py-[10px] flex flex-col mx-auto"
+      className="w-full max-w-[800px] flex flex-col mx-auto"
       method="POST"
     >
       <h2
         className="text-center text-black font-bold text-[28px]
           mb-[8px] leading-[1] rounded-[7px] select-none"
       >
-        Create task
+        Add Task
       </h2>
+      <FormInput disableLabel name="task" labelText="task title" required />
       <textarea
-        className="flex mb-[10px] w-full resize-y min-h-[60px] max-h-[120px] p-[10px] flex-col border border-1 border-black rounded"
-        name="task"
+        className="flex mb-[10px] w-full resize-y min-h-[90px] max-h-[120px] p-[10px] flex-col border border-1 border-black rounded"
+        name="details"
         id="taskBody"
-        placeholder="Task body..."
+        placeholder="Task Details..."
         required
       />
       <div className="flex justify-end gap-[10px]">
-        <button className="btn-blue" type="button" onClick={modalClose}>
+        <button className="btn-teal" type="button" onClick={modalClose}>
           cancel
         </button>
-        <SubmitBtn text="add" />
+        <SubmitBtn className="btn-indigo" text="add" />
       </div>
     </form>
   );

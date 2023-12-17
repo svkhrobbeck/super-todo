@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getRequest } from "../service/request";
 import SubmitBtn from "./submit-btn";
 import { toast } from "react-toastify";
+import FormInput from "./form-input";
 
 const editTaskModalInner = ({ modalClose, id }) => {
   const navigate = useNavigate();
@@ -38,28 +39,36 @@ const editTaskModalInner = ({ modalClose, id }) => {
       method="POST"
     >
       <h2
-        className="text-center text-black font-bold text-[28px]
+        className="text-center font-bold text-[28px]
           mb-[8px] leading-[1] rounded-[7px] select-none"
       >
         Edit Task
       </h2>
+
+      <FormInput name="task" defaultValue={todo.task} required />
+      <label htmlFor="taskDetails">Details</label>
       <textarea
-        className="flex mb-[10px] w-full resize-y min-h-[60px] max-h-[120px] p-[10px] flex-col border border-1 border-black rounded"
-        name="task"
-        id="taskBody"
-        placeholder="Task body..."
-        defaultValue={todo.task}
+        className="text-black flex mb-[10px] w-full resize-y min-h-[60px] max-h-[120px] p-[10px] flex-col border border-1 border-black rounded"
+        name="details"
+        id="taskDetails"
+        placeholder="Task Details..."
+        defaultValue={todo.details}
         required
       />
-      <label className="flex items-center">
-        <input type="checkbox" name="status" defaultChecked={todo.status} />
+      <label className="flex gap-[5px] w-[16px] h-[16px] items-center">
+        <input
+          className="accent-black"
+          type="checkbox"
+          name="status"
+          defaultChecked={todo.status}
+        />
         <span>status</span>
       </label>
       <div className="flex justify-end gap-[10px]">
-        <button className="btn-blue" type="button" onClick={modalClose}>
+        <button className="btn-teal" type="button" onClick={modalClose}>
           cancel
         </button>
-        <SubmitBtn text="update" />
+        <SubmitBtn className="btn-indigo" text="update" />
       </div>
     </form>
   );
