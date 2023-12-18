@@ -29,10 +29,10 @@ const Landing = () => {
             (with google authentication)
           </p>
           <div className="flex gap-[10px]">
-            <Link className="btn-navy" to="/sign-up">
+            <Link className="btn-teal" to="/sign-up">
               Sign Up
             </Link>
-            <Link className="btn-navy" to="/sign-in">
+            <Link className="btn-teal" to="/sign-in">
               Sign In
             </Link>
           </div>
