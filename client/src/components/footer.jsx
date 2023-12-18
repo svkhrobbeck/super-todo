@@ -8,7 +8,7 @@ const Footer = () => {
           <ul className="flex flex-wrap justify-center gap-4 text-xs lg:justify-end">
             <li>
               <Link
-                className="text-gray-500 transition hover:opacity-75"
+                className="text-gray-500 flex transition hover:opacity-75"
                 to="/tos"
               >
                 Terms &amp; Conditions
@@ -16,7 +16,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                className="text-gray-500 transition hover:opacity-75"
+                className="text-gray-500 flex transition hover:opacity-75"
                 to="/privacy"
               >
                 Privacy Policy
@@ -26,9 +26,8 @@ const Footer = () => {
           <ul className="mt-8 flex justify-center gap-6 sm:mt-0 lg:justify-end">
             <li>
               <a
-                className="text-teal-600 transition hover:opacity-75"
+                className="text-teal-600 flex rounded transition hover:opacity-75"
                 href="https://facebook.com/svkhrobbeck"
-                rel="noreferrer"
                 target="_blank"
               >
                 <span className="sr-only">Facebook</span>
@@ -48,9 +47,8 @@ const Footer = () => {
             </li>
             <li>
               <a
-                className="text-teal-600 transition hover:opacity-75"
+                className="text-teal-600 flex rounded transition hover:opacity-75"
                 href="https://instagram.com/svkhrobbeck"
-                rel="noreferrer"
                 target="_blank"
               >
                 <span className="sr-only">Instagram</span>
@@ -71,9 +69,8 @@ const Footer = () => {
             <li>
               <a
                 href="https://twitter.com/svkhrobbeck"
-                rel="noreferrer"
                 target="_blank"
-                className="text-teal-600 transition hover:opacity-75"
+                className="text-teal-600 flex rounded transition hover:opacity-75"
               >
                 <span className="sr-only">Twitter</span>
                 <svg
@@ -89,9 +86,8 @@ const Footer = () => {
             <li>
               <a
                 href="https://github.com/svkhrobbeck"
-                rel="noreferrer"
                 target="_blank"
-                className="text-teal-600 transition hover:opacity-75"
+                className="text-teal-600 flex rounded transition hover:opacity-75"
               >
                 <span className="sr-only">GitHub</span>
                 <svg
