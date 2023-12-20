@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer class="bg-white">
-      <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
-        <div class="mt-16 border-t border-gray-100 pt-8 sm:flex sm:items-center sm:justify-between lg:mt-24">
+    <footer className="bg-white">
+      <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mt-16 border-t border-gray-100 pt-8 sm:flex sm:items-center sm:justify-between lg:mt-24">
           <ul className="flex flex-wrap justify-center gap-4 text-xs lg:justify-end">
             <li>
               <Link
