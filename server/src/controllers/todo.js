@@ -10,7 +10,7 @@ export const getAllTodo = async (req, res) => {
   const todoParams = { author, task };
   const total_todo = await Todo.countDocuments(todoParams);
 
-  const all_todo = await Todo.find(todoParams);
+  const all_todo = (await Todo.find(todoParams).lean()).reverse();
   res.status(StatusCodes.OK).json({ all_todo, total_todo });
 };
 
