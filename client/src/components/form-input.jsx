@@ -1,30 +1,23 @@
-const FormInput = ({
-  type = "text",
-  name,
-  labelText,
-  required,
-  disableLabel = false,
-  autoFill = true,
-  defaultValue = "",
-  onChange = null,
-}) => {
+const FormInput = props => {
   return (
     <div className="flex w-full flex-col [&:not(:last-child)]:mb-[15px]">
-      {!disableLabel && (
-        <label className="select-none capitalize" htmlFor={name}>
-          {labelText || name}
+      {!props.disableLabel && (
+        <label className="select-none capitalize" htmlFor={props.name}>
+          {props.labelText || props.name}
         </label>
       )}
       <input
         className="py-[8px] px-[10px] placeholder:capitalize border border-1 border-black rounded"
-        id={name}
-        type={type}
-        name={name}
-        autoComplete={autoFill ? "on" : "off"}
-        required={required}
-        placeholder={labelText || name}
-        defaultValue={defaultValue}
-        onChange={e => onChange(e)}
+        id={props.name}
+        type={props.type}
+        name={props.name}
+        autoComplete={props.autoFill ? "on" : "off"}
+        required={props.required}
+        disabled={props.disabled}
+        readOnly={props.readOnly}
+        placeholder={props.labelText || props.name}
+        defaultValue={props.defaultValue}
+        onChange={e => props.onChange(e)}
       />
     </div>
   );
