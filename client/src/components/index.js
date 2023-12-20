@@ -6,5 +6,6 @@ export { default as Tasks } from "./tasks";
 export { default as Modal } from "./modal";
 export { default as AddTaskModalInner } from "./add-task";
 export { default as EditTaskModalInner } from "./edit-task";
+export { default as TaskInfoModalInner } from "./task-info";
 export { default as SearchContainer } from "./search-container";
 export { default as Footer } from "./footer";
