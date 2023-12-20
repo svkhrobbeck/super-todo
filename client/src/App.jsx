@@ -5,9 +5,11 @@ import {
   ErrorPage,
   HomePage,
   LandingPage,
+  PolicyPage,
   SettingsPage,
   SignInPage,
   SignUpPage,
+  TermsOfServicePage,
   UpdatePassword,
 } from "./pages";
 import { dashboardLoader } from "./layouts/dashboard-layout";
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
         element: <SignUpPage />,
         action: signUpAction,
         loader: signUpLoader,
+      },
+      {
+        path: "tos",
+        element: <TermsOfServicePage />,
+      },
+      {
+        path: "policy",
+        element: <PolicyPage />,
       },
       {
         path: "dashboard",
