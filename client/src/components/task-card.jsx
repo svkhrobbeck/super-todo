@@ -7,12 +7,13 @@ import { MdDeleteOutline, MdInfoOutline } from "react-icons/md";
 import { useState } from "react";
 import Modal from "./modal";
 import spinnerImg from "/images/spinner.svg";
-import { EditTaskModalInner } from ".";
+import { EditTaskModalInner, TaskInfoModalInner } from ".";
 import { toast } from "react-toastify";
 
 const TaskCard = ({ _id, task, details, status, createdAt, updatedAt }) => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
+  const [infoModal, setInfoModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleDeleteTodo = async () => {
@@ -73,7 +74,9 @@ const TaskCard = ({ _id, task, details, status, createdAt, updatedAt }) => {
           disabled={isLoading}
           onChange={handleStatusUpdate}
         />
-        <span>{status ? "completed" : "mark as completed"}</span>
+        <span className="select-none">
+          {status ? "completed" : "mark as completed"}
+        </span>
         {isLoading && <img src={spinnerImg} alt="spinner" />}
       </label>
       <div className="absolute top-[3px] right-[3px] flex flex-col gap-[5px] items-center">
@@ -89,7 +92,7 @@ const TaskCard = ({ _id, task, details, status, createdAt, updatedAt }) => {
         </button>
         <button
           className="flex"
-          // onClick={handleDeleteTodo}
+          onClick={() => setInfoModal(true)}
           role="info"
           title="show info"
         >
@@ -99,6 +102,11 @@ const TaskCard = ({ _id, task, details, status, createdAt, updatedAt }) => {
       {modal ? (
         <Modal modalClose={() => setModal(false)}>
           <EditTaskModalInner id={_id} modalClose={() => setModal(false)} />
+        </Modal>
+      ) : null}
+      {infoModal ? (
+        <Modal modalClose={() => setInfoModal(false)}>
+          <TaskInfoModalInner id={_id} modalClose={() => setInfoModal(false)} />
         </Modal>
       ) : null}
     </div>
