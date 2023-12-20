@@ -9,7 +9,7 @@ import FormInput from "./form-input";
 
 const editTaskModalInner = ({ modalClose, id }) => {
   const navigate = useNavigate();
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState({});
 
   useEffect(() => {
     getRequest(`todo/${id}`).then(({ todo }) => setTodo(todo));
@@ -39,8 +39,8 @@ const editTaskModalInner = ({ modalClose, id }) => {
       method="POST"
     >
       <h2
-        className="text-center font-bold text-[28px]
-          mb-[8px] leading-[1] rounded-[7px] select-none"
+        className="text-center font-bold text-[28px] mb-[8px]
+        leading-[1] rounded-[7px] select-none"
       >
         Edit Task
       </h2>
