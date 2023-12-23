@@ -25,12 +25,12 @@ const RunningTasks = () => {
 
   return (
     <div className="w-full flex flex-col">
-      <h2 className="text-center font-bold text-[18px] mb-[7px]">
+      <h2 className="text-center font-bold text-[28px] xl:text-[25px] lg:text-[22px] md:text-[20px] sm:text-[18px] mb-[7px]">
         {type === "all" && "All Tasks"}
         {type === "running" && "Running Tasks"}
         {type === "completed" && "Completed Tasks"}
       </h2>
-      <div className="grid grid-cols-4 gap-[15px]">
+      <div className="grid grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-[15px]">
         {tasks().map(todo => (
           <TaskCard key={todo._id} {...todo} />
         ))}
