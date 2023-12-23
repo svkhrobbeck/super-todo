@@ -39,7 +39,7 @@ const SignUpPage = () => {
       <Helmet>
         <title>Todo Application | Sign Up</title>
       </Helmet>
-      <div className="flex flex-col justify-center items-center w-full h-screen">
+      <section className="container flex flex-col justify-center items-center w-full h-screen">
         <Form className="max-w-[480px] w-full flex flex-col" method="POST">
           <h2 className="font-semibold text-[38px] mb-3 text-center">
             Sign Up
@@ -56,7 +56,10 @@ const SignUpPage = () => {
           </div>
         </Form>
 
-        <button className="mb-2" onClick={() => signInWithGoogle()}>
+        <button
+          className="mb-2 rounded-[4px] overflow-hidden"
+          onClick={() => signInWithGoogle()}
+        >
           <img src={signUpBtn} alt="sign-up with google" />
         </button>
 
@@ -66,7 +69,7 @@ const SignUpPage = () => {
             Sign In
           </Link>
         </p>
-      </div>
+      </section>
     </>
   );
 };

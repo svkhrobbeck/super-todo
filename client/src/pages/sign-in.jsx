@@ -50,7 +50,7 @@ const SignInPage = () => {
       <Helmet>
         <title>Todo Application | Sign In</title>
       </Helmet>
-      <div className="flex flex-col justify-center items-center w-full h-screen">
+      <section className="container flex flex-col justify-center items-center w-full h-screen">
         <Form className="max-w-[480px] w-full flex flex-col" method="POST">
           <h2 className="font-semibold text-[38px] mb-3 text-center">
             Sign In
@@ -71,7 +71,10 @@ const SignInPage = () => {
           </div>
         </Form>
 
-        <button className="mb-2" onClick={() => signInWithGoogle()}>
+        <button
+          className="mb-2 rounded-[4px] overflow-hidden"
+          onClick={() => signInWithGoogle()}
+        >
           <img src={signInBtn} alt="sign-in with google" />
         </button>
 
@@ -81,7 +84,7 @@ const SignInPage = () => {
             Sign Up
           </Link>
         </p>
-      </div>
+      </section>
     </>
   );
 };
