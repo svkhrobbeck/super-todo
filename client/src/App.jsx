@@ -5,7 +5,7 @@ import {
   ErrorPage,
   HomePage,
   LandingPage,
-  PolicyPage,
+  PrivacyPage,
   SettingsPage,
   SignInPage,
   SignUpPage,
@@ -49,8 +49,8 @@ const router = createBrowserRouter([
         element: <TermsOfServicePage />,
       },
       {
-        path: "policy",
-        element: <PolicyPage />,
+        path: "privacy",
+        element: <PrivacyPage />,
       },
       {
         path: "dashboard",

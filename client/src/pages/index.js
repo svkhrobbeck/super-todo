@@ -6,4 +6,4 @@ export { default as HomePage } from "./home";
 export { default as SettingsPage } from "./settings";
 export { default as UpdatePassword } from "./update-password";
 export { default as TermsOfServicePage } from "./terms-of-service";
-export { default as PolicyPage } from "./policy";
+export { default as PrivacyPage } from "./privacy";
