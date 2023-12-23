@@ -7,7 +7,7 @@ const FormInput = props => {
         </label>
       )}
       <input
-        className="py-[8px] px-[10px] placeholder:capitalize border border-1 border-black rounded"
+        className="py-[8px] w-full px-[10px] placeholder:capitalize border border-1 border-black rounded"
         id={props.name}
         type={props.type}
         name={props.name}
