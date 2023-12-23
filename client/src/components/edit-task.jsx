@@ -39,7 +39,7 @@ const editTaskModalInner = ({ modalClose, id }) => {
       method="POST"
     >
       <h2
-        className="text-center font-bold text-[28px] mb-[8px]
+        className="text-center font-bold text-[28px] lg:text-[26px] md:text-[24px] sm:text-[22px] mb-[8px]
         leading-[1] rounded-[7px] select-none"
       >
         Edit Task

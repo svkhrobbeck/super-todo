@@ -31,7 +31,7 @@ const AddTaskModalInner = ({ modalClose }) => {
       method="POST"
     >
       <h2
-        className="text-center text-black font-bold text-[28px]
+        className="text-center text-black font-bold text-[28px] lg:text-[26px] md:text-[24px] sm:text-[22px]
           mb-[8px] leading-[1] rounded-[7px] select-none"
       >
         Add Task
