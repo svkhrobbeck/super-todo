@@ -38,16 +38,18 @@ const SettingsPage = () => {
       </Helmet>
       <section className="flex justify-center">
         <Form className="p-[10px] max-w-[700px] w-full" method="PATCH">
-          <div className="pt-[10px] flex justify-center items-center gap-[12px]">
+          <div className="py-[10px] flex justify-center items-center gap-[12px]">
             <img
-              className="w-[100px] rounded-full"
+              className="aspect-square object-cover h-auto w-[100px] lg:w-[80px] md:w-[65px] rounded-full"
               src={user.picture}
               alt={user.name}
               title={user.name}
             />
             <div>
-              <p className="font-bold text-[26px] lowercase">{user.email}</p>
-              <p className="font-medium text-[18px]">
+              <p className="font-bold text-[26px] lg:text-[24px] md:text-[20px] lowercase">
+                {user.email}
+              </p>
+              <p className="font-medium text-[18px] lg:text-[16px] md:text-[15px]">
                 you can change the profile
               </p>
             </div>
