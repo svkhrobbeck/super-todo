@@ -36,8 +36,8 @@ const UpdatePassword = () => {
       </Helmet>
       <div className="flex justify-center">
         <Form className="max-w-[600px] w-full" method="PATCH">
-          <h3 className="font-medium text-center text-[28px]">
-            you can {passwordType.includes("set") ? "set new" : "update the"}{" "}
+          <h3 className="font-semibold my-[10px] text-center text-[28px] lg:text-[26px] md:text-[24px] sm:text-[22px]">
+            You can {passwordType.includes("set") ? "set new" : "update the"}{" "}
             password
           </h3>
           {passwordType === "set-password" ? (
@@ -83,7 +83,9 @@ const UpdatePassword = () => {
               <option value="set-password">set password</option>
               <option value="update-password">update password</option>
             </select>
-            {passwordType && <SubmitBtn className="btn-indigo" text="comfirm" />}
+            {passwordType && (
+              <SubmitBtn className="btn-indigo" text="comfirm" />
+            )}
           </div>
         </Form>
       </div>
