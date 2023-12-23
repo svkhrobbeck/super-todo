@@ -1,7 +1,7 @@
 import { Outlet, redirect, useLoaderData } from "react-router-dom";
 import "../service/axios";
 import axios from "axios";
-import { Footer, Header } from "./../components";
+import { Header } from "./../components";
 import storage from "../helpers/storage";
 import { createContext, useContext, useState } from "react";
 
@@ -27,7 +27,6 @@ const DashboardLayout = () => {
       <main className="flex-grow-[1]">
         <Outlet context={{ user }} />
       </main>
-      <Footer />
     </DashboardContext.Provider>
   );
 };
