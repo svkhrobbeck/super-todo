@@ -43,23 +43,23 @@ const TaskCard = ({ _id, task, details, status, createdAt, updatedAt }) => {
   };
 
   return (
-    <div className="flex flex-col max-w-[470px] relative w-full text-white bg-teal-600 rounded-[7px] p-[16px]">
-      <h4 className="text-[24px] font-semibold whitespace-nowrap text-ellipsis overflow-hidden">
+    <div className="flex flex-col max-w-[470px] lg:max-w-[780px] relative w-full text-white bg-teal-600 rounded-[7px] p-[16px]">
+      <h4 className="text-[22px] lg:text-[20px] md:text-[18px] font-semibold whitespace-nowrap text-ellipsis overflow-hidden">
         {task}
       </h4>
-      <p className="text-[17px] opacity-[.7] mb-[4px] font-medium whitespace-nowrap text-ellipsis overflow-hidden">
+      <p className="text-[17px] lg:text-[16px] md:text-[15px] opacity-[.7] mb-[4px] font-normal whitespace-nowrap text-ellipsis overflow-hidden">
         {details}
       </p>
 
       {status ? (
-        <div className="text-[15px] mb-[5px] font-bold flex items-center">
+        <div className="text-[15px] lg:text-[14px] md:text-[13px] mb-[5px] font-bold flex items-center">
           <span className="block">End date:</span>
           <span className="block ml-[9px]">
             {moment(updatedAt).format("lll")}
           </span>
         </div>
       ) : (
-        <div className="text-[15px] mb-[5px] font-bold flex items-center">
+        <div className="text-[15px] lg:text-[14px] md:text-[13px] mb-[5px] font-bold flex items-center">
           <span className="block">Start date:</span>
           <span className="block ml-[9px]">
             {moment(createdAt).format("lll")}
@@ -74,7 +74,7 @@ const TaskCard = ({ _id, task, details, status, createdAt, updatedAt }) => {
           disabled={isLoading}
           onChange={handleStatusUpdate}
         />
-        <span className="select-none">
+        <span className="select-none text-[17px] lg:text-[16px] md:text-[15px]">
           {status ? "completed" : "mark as completed"}
         </span>
         {isLoading && <img src={spinnerImg} alt="spinner" />}
