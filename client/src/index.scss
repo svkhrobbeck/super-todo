@@ -48,32 +48,36 @@
 
 // components
 @layer components {
+  .btn {
+    @apply px-[11px] py-[6px] xl:px-[9px] xl:py-[5px] lg:px-[8px] lg:py-[4px] md:px-[13px] rounded-[6px] whitespace-nowrap;
+  }
+
   .btn-navy {
-    @apply bg-navy text-white px-[11px] py-[6px] rounded-[6px];
+    @apply bg-navy btn text-white;
   }
 
   .btn-blue {
-    @apply bg-blue-600 text-white px-[11px] py-[6px] rounded-[6px];
+    @apply bg-blue-600 btn text-white;
   }
 
   .btn-orange {
-    @apply text-white bg-orange-700 px-[11px] py-[6px] rounded-[6px];
+    @apply bg-orange-700 btn text-white;
   }
 
   .btn-teal {
-    @apply text-white bg-teal-600 px-[11px] py-[6px] rounded-[6px];
+    @apply bg-teal-600 btn text-white;
   }
 
   .btn-red {
-    @apply text-white bg-red-600 px-[11px] py-[6px] rounded-[6px];
+    @apply bg-red-600 btn text-white;
   }
 
   .btn-black {
-    @apply text-white bg-black px-[11px] py-[6px] rounded-[6px];
+    @apply bg-black btn text-white;
   }
 
   .btn-indigo {
-    @apply text-white bg-indigo-600 px-[11px] py-[6px] rounded-[6px];
+    @apply bg-indigo-600 btn text-white;
   }
 
   .alert-orange {
