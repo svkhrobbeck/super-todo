@@ -6,6 +6,7 @@ import errorToast from "../helpers/errorToast";
 import axios from "axios";
 import storage from "../helpers/storage";
 import { toast } from "react-toastify";
+import { SUCCESS_TOAST_OPT } from "../helpers/constants";
 
 export const settingsAction = async ({ request }) => {
   const formData = await request.formData();
@@ -13,7 +14,7 @@ export const settingsAction = async ({ request }) => {
 
   try {
     await axios.patch("/user/profile", payload);
-    toast.success("user profile updated");
+    toast.success("user profile updated", SUCCESS_TOAST_OPT);
     return redirect("..");
   } catch (err) {
     errorToast(err);
@@ -28,7 +29,7 @@ const SettingsPage = () => {
   const signOutUser = () => {
     storage.remove("access_token");
     navigate("/sign-in");
-    toast.success("signing out...");
+    toast.success("signing out...", SUCCESS_TOAST_OPT);
   };
 
   return (

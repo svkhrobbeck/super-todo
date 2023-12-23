@@ -3,12 +3,13 @@ import { Link, redirect } from "react-router-dom";
 import landingImg from "/images/landing-img.svg";
 import storage from "../helpers/storage";
 import { toast } from "react-toastify";
+import { SUCCESS_TOAST_OPT } from "../helpers/constants";
 
 export const landingLoader = () => {
   const access_token = storage.get("access_token");
 
   if (access_token) {
-    toast.success("Sign-in successful");
+    toast.success("Sign-in successful", SUCCESS_TOAST_OPT);
     return redirect("/dashboard");
   }
 

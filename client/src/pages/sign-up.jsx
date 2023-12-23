@@ -7,6 +7,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import errorToast from "../helpers/errorToast";
 import storage from "../helpers/storage";
+import { SUCCESS_TOAST_OPT } from "../helpers/constants";
 
 export const signUpAction = async ({ request }) => {
   const formData = await request.formData();
@@ -14,7 +15,7 @@ export const signUpAction = async ({ request }) => {
 
   try {
     await axios.post("/auth/register", payload);
-    toast.success("Sign-up successful");
+    toast.success("Sign-up successful", SUCCESS_TOAST_OPT);
     return redirect("/sign-in");
   } catch (err) {
     errorToast(err);
@@ -26,7 +27,7 @@ export const signUpLoader = () => {
   const access_token = storage.get("access_token");
 
   if (access_token) {
-    toast.success("Sign-in successful");
+    toast.success("Sign-in successful", SUCCESS_TOAST_OPT);
     return redirect("/dashboard");
   }
 

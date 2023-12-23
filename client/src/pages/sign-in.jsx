@@ -7,6 +7,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import storage from "../helpers/storage";
 import errorToast from "../helpers/errorToast";
+import { SUCCESS_TOAST_OPT } from "../helpers/constants";
 
 export const signInAction = async ({ request }) => {
   const formData = await request.formData();
@@ -19,7 +20,7 @@ export const signInAction = async ({ request }) => {
       storage.set("access_token", data.access_token);
     } else return;
 
-    toast.success("Sign-in successful");
+    toast.success("Sign-in successful", SUCCESS_TOAST_OPT);
     return redirect("/dashboard");
   } catch (err) {
     errorToast(err);
@@ -36,7 +37,7 @@ export const signInLoader = () => {
   }
 
   if ((access_token && !token) || token) {
-    toast.success("Sign-in successful");
+    toast.success("Sign-in successful", SUCCESS_TOAST_OPT);
     return redirect("/dashboard");
   }
   return null;

@@ -9,6 +9,7 @@ import Modal from "./modal";
 import spinnerImg from "/images/spinner.svg";
 import { EditTaskModalInner, TaskInfoModalInner } from ".";
 import { toast } from "react-toastify";
+import { SUCCESS_TOAST_OPT } from "../helpers/constants";
 
 const TaskCard = ({ _id, task, details, status, createdAt, updatedAt }) => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const TaskCard = ({ _id, task, details, status, createdAt, updatedAt }) => {
     try {
       await axios.delete(`/todo/${_id}`);
       navigate("/dashboard");
-      toast.success("todo deleted");
+      toast.success("todo deleted", SUCCESS_TOAST_OPT);
     } catch (err) {
       errorToast(er);
     } finally {
@@ -34,7 +35,7 @@ const TaskCard = ({ _id, task, details, status, createdAt, updatedAt }) => {
     try {
       await axios.patch(`/todo/status/${_id}`);
       navigate("/dashboard");
-      toast.success("todo status updated");
+      toast.success("todo status updated", SUCCESS_TOAST_OPT);
     } catch (err) {
       errorToast(err);
     } finally {

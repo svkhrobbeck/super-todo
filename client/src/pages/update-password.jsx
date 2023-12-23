@@ -6,6 +6,7 @@ import axios from "axios";
 import filterObjectFields from "../helpers/filterObjectFields";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { SUCCESS_TOAST_OPT } from "../helpers/constants";
 
 export const updatePasswordAction = async ({ request }) => {
   const formData = await request.formData();
@@ -17,7 +18,8 @@ export const updatePasswordAction = async ({ request }) => {
   try {
     await axios.patch(url, body);
     toast.success(
-      type.includes("set") ? "password setted" : "password updated"
+      type.includes("set") ? "password setted" : "password updated",
+      SUCCESS_TOAST_OPT
     );
     return redirect("..");
   } catch (err) {

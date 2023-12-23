@@ -4,6 +4,7 @@ import errorToast from "../helpers/errorToast";
 import SubmitBtn from "./submit-btn";
 import { toast } from "react-toastify";
 import FormInput from "./form-input";
+import { SUCCESS_TOAST_OPT } from "../helpers/constants";
 
 const AddTaskModalInner = ({ modalClose }) => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const AddTaskModalInner = ({ modalClose }) => {
       await axios.post("/todo", payload);
       navigate("/dashboard");
       modalClose();
-      toast.success("todo created");
+      toast.success("todo created", SUCCESS_TOAST_OPT);
     } catch (err) {
       errorToast(err);
     }

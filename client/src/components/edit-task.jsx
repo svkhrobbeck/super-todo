@@ -6,6 +6,7 @@ import { getRequest } from "../service/request";
 import SubmitBtn from "./submit-btn";
 import { toast } from "react-toastify";
 import FormInput from "./form-input";
+import { SUCCESS_TOAST_OPT } from "../helpers/constants";
 
 const editTaskModalInner = ({ modalClose, id }) => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const editTaskModalInner = ({ modalClose, id }) => {
     try {
       await axios.patch(`/todo/${id}`, payload);
       navigate("/dashboard");
-      toast.success("todo updated");
+      toast.success("todo updated", SUCCESS_TOAST_OPT);
       modalClose();
     } catch (err) {
       errorToast(err);
