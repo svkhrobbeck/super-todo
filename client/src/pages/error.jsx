@@ -20,7 +20,7 @@ const ErrorPage = () => {
         <h2 className="font-bold mb-[12px] text-[25px]">
           <span className="text-teal-700">{pathname}</span> page not found!
         </h2>
-        <Link className="btn-indigo" to="/dashboard">
+        <Link className="btn-indigo" to="/">
           back to Home
         </Link>
       </div>
