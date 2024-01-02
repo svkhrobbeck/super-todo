@@ -21,6 +21,9 @@ import { settingsAction } from "./pages/settings";
 import { updatePasswordAction } from "./pages/update-password";
 import { landingLoader } from "./pages/landing";
 
+const isDarkTheme = localStorage.getItem("theme") === JSON.stringify("dark");
+// if (isDarkTheme) document.documentElement.classList.add("dark");
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <DashboardLayout />,
+        element: <DashboardLayout isDarkTheme={isDarkTheme} />,
         loader: dashboardLoader,
         children: [
           {

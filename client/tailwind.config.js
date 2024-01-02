@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     accentColor: ({ theme }) => ({
       ...theme("colors"),
@@ -137,6 +138,7 @@ export default {
       inherit: colors.inherit,
       current: colors.current,
       navy: "#427d9d",
+      "dark-theme": "#191919",
       transparent: colors.transparent,
       black: colors.black,
       white: colors.white,

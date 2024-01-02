@@ -1,4 +1,4 @@
-const FormInput = props => {
+const FormInput = (props) => {
   return (
     <div className="flex w-full flex-col [&:not(:last-child)]:mb-[15px]">
       {!props.disableLabel && (
@@ -7,7 +7,7 @@ const FormInput = props => {
         </label>
       )}
       <input
-        className="py-[8px] w-full px-[10px] placeholder:capitalize border border-1 border-black rounded"
+        className="py-[8px] w-full text-black dark:text-white bg-inherit px-[10px] placeholder:capitalize border border-1 border-black dark:border-white rounded"
         id={props.name}
         type={props.type}
         name={props.name}
@@ -17,7 +17,7 @@ const FormInput = props => {
         readOnly={props.readOnly}
         placeholder={props.labelText || props.name}
         defaultValue={props.defaultValue}
-        onChange={e => props.onChange(e)}
+        onChange={(e) => props.onChange(e)}
       />
     </div>
   );
